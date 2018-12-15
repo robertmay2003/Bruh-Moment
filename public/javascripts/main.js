@@ -19,12 +19,20 @@ function listen () {
 			// listen for next bruh
 			listen();
 
+			// change sound
+			const file = '../audio/bruh.mp3';
+
 			// say bruh
-			let audio = new Audio('../audio/bruh.mp3');
+			let audio = new Audio(file);
 			audio.play();
 
 			// spawn face
 			spawnBruhFace();
+		},
+		error: (jqXHR, textStatus, errorThrown) => {
+			// If request times out, resend
+			console.log('error');
+			listen();
 		}
 	};
 
